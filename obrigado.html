@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="Confirmação de envio do material gratuito da Cevora." />
+  <title>Material a caminho | Cevora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body class="checkout-page">
+  <div class="noise" aria-hidden="true"></div>
+  <div class="checkout-glow checkout-glow--gold" aria-hidden="true"></div>
+  <div class="checkout-glow checkout-glow--red" aria-hidden="true"></div>
+
+  <div class="offer-bar">
+    <span class="offer-bar__icon">♛</span>
+    <span>Solicitação concluída</span>
+  </div>
+
+  <header class="checkout-header">
+    <a class="brand" href="index.html" aria-label="Cevora, voltar para a página principal">
+      <span class="brand__mark" aria-hidden="true">
+        <span class="brand__crown">♛</span>
+        C
+      </span>
+      <span class="brand__name">CEVORA</span>
+    </a>
+  </header>
+
+  <main class="checkout-main">
+    <section class="checkout-shell checkout-shell--thank-you" aria-labelledby="thank-you-title">
+      <div class="checkout-card-wrap reveal is-visible">
+        <div class="checkout-card">
+          <div class="checkout-card__topline" aria-hidden="true"></div>
+          <div class="lead-success lead-success--standalone">
+            <div class="lead-success__icon" aria-hidden="true">✓</div>
+            <p class="eyebrow">Tudo certo</p>
+            <h1 id="thank-you-title">Seu material está a caminho.</h1>
+            <p>
+              Verifique sua caixa de entrada e também as abas de promoções ou spam. O material foi preparado para ajudar equipes de clínicas de cirurgia plástica a conduzirem mais pacientes até a consulta de avaliação.
+            </p>
+            <a class="button button--primary button--large" href="index.html">Voltar para a Cevora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="checkout-footer">
+    <span>© <span id="year"></span> Cevora</span>
+    <span>Estratégia, tecnologia e crescimento para cirurgiões plásticos.</span>
+  </footer>
+
+  <script>
+    const year = document.querySelector('#year');
+    if (year) year.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
