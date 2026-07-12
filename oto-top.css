@@ -1,0 +1,76 @@
+.oto-vsl-top {
+  display: grid;
+  justify-items: center;
+  padding-top: clamp(1.6rem, 3vw, 2.6rem);
+  padding-bottom: clamp(2.8rem, 5vw, 4.5rem);
+  text-align: center;
+}
+
+.oto-vsl-top__copy {
+  max-width: 920px;
+  margin-bottom: 1.35rem;
+}
+
+.oto-vsl-top .oto-badge {
+  margin-bottom: 1rem;
+}
+
+.oto-vsl-top h1 {
+  max-width: 920px;
+  margin: 0 auto 0.9rem;
+  font-size: clamp(2.8rem, 5.2vw, 5.1rem);
+  line-height: 0.9;
+}
+
+.oto-vsl-top__lead {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: clamp(0.95rem, 1.35vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.oto-vsl-top .vsl-frame {
+  width: min(100%, 760px);
+}
+
+.oto-hero--after-vsl {
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+@media (max-width: 760px) {
+  .oto-vsl-top {
+    width: min(calc(100% - 24px), var(--content-width));
+    padding-top: 1.35rem;
+    padding-bottom: 3.2rem;
+  }
+
+  .oto-vsl-top__copy {
+    margin-bottom: 1rem;
+  }
+
+  .oto-vsl-top h1 {
+    font-size: clamp(2.45rem, 12vw, 3.7rem);
+  }
+
+  .oto-vsl-top__lead {
+    font-size: 0.94rem;
+  }
+
+  .oto-vsl-top .vsl-frame__inner {
+    padding: 1rem;
+  }
+
+  .oto-vsl-top .vsl-play {
+    width: 62px;
+    height: 62px;
+    margin-bottom: 0.8rem;
+  }
+
+  .oto-vsl-top .vsl-frame p {
+    font-size: 1.25rem;
+  }
+
+  .oto-vsl-top .vsl-frame__inner > span {
+    display: none;
+  }
+}
