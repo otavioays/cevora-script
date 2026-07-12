@@ -28,20 +28,10 @@ if (yearElement) {
 const checkoutLinks = document.querySelectorAll('[data-checkout]');
 checkoutLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
-    const checkoutUrl = link.dataset.checkoutUrl;
+    event.preventDefault();
 
-    if (!checkoutUrl) {
-      event.preventDefault();
-      link.classList.add('is-awaiting-link');
-
-      const originalText = link.innerHTML;
-      link.innerHTML = '<span>Checkout será conectado aqui</span>';
-
-      window.setTimeout(() => {
-        link.innerHTML = originalText;
-        link.classList.remove('is-awaiting-link');
-      }, 2200);
-    }
+    const checkoutUrl = link.dataset.checkoutUrl || 'checkout.html';
+    window.location.href = checkoutUrl;
   });
 });
 
