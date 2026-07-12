@@ -11,8 +11,6 @@ const successPanel = document.querySelector('#lead-success');
 const submittedEmail = document.querySelector('#submitted-email');
 const securityNote = document.querySelector('.checkout-card__security');
 
-const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-
 const setFeedback = (message = '', type = 'error') => {
   if (!feedback) return;
 
@@ -26,7 +24,7 @@ const setLoading = (isLoading) => {
 
   submitButton.disabled = isLoading;
   submitButton.innerHTML = isLoading
-    ? '<span>Enviando seu acesso...</span>'
+    ? '<span>Abrindo sua oferta...</span>'
     : '<span>Receber material gratuito</span><span aria-hidden="true">↗</span>';
 };
 
@@ -59,7 +57,7 @@ const showSuccess = (email) => {
 
   window.setTimeout(() => {
     window.location.href = 'oto.html';
-  }, 1400);
+  }, 650);
 };
 
 emailInput?.addEventListener('input', () => {
@@ -67,54 +65,16 @@ emailInput?.addEventListener('input', () => {
   setFeedback();
 });
 
-form?.addEventListener('submit', async (event) => {
+form?.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const email = emailInput?.value.trim() || '';
-
-  if (!isValidEmail(email)) {
-    emailInput?.classList.add('is-invalid');
-    emailInput?.focus();
-    setFeedback('Insira um e-mail válido para receber o material.');
-    return;
-  }
-
-  const endpoint = form.dataset.endpoint?.trim();
-
-  if (!endpoint) {
-    setFeedback('A integração de envio ainda precisa ser conectada ao Brevo ou Supabase.');
-    console.warn(
-      'Cevora: adicione a URL da função de captura no atributo data-endpoint do formulário em checkout.html.'
-    );
-    return;
-  }
+  const email = emailInput?.value.trim() || 'preview@cevora.local';
 
   setLoading(true);
-  setFeedback();
+  setFeedback('Modo de visualização ativo. Nenhum e-mail será enviado.', 'success');
 
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        source: 'cevora-scripts-checkout',
-        pageUrl: window.location.href,
-        createdAt: new Date().toISOString(),
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Falha no envio: ${response.status}`);
-    }
-
+  window.setTimeout(() => {
     showSuccess(email);
-  } catch (error) {
-    console.error(error);
-    setFeedback('Não foi possível enviar agora. Tente novamente em alguns instantes.');
-  } finally {
     setLoading(false);
-  }
+  }, 250);
 });
