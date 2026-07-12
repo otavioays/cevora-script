@@ -1,0 +1,40 @@
+.checkout-shell--thank-you {
+  grid-template-columns: minmax(0, 620px);
+  justify-content: center;
+}
+
+.checkout-shell--thank-you .checkout-card {
+  display: grid;
+  min-height: 520px;
+  align-items: center;
+  text-align: center;
+}
+
+.lead-success--standalone {
+  display: grid;
+  justify-items: center;
+}
+
+.lead-success--standalone h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(3.2rem, 8vw, 5.8rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+}
+
+.lead-success--standalone p:not(.eyebrow) {
+  max-width: 460px;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 760px) {
+  .checkout-shell--thank-you {
+    width: min(calc(100% - 28px), 620px);
+  }
+
+  .checkout-shell--thank-you .checkout-card {
+    min-height: 500px;
+    padding: 2.2rem 1.4rem;
+  }
+}
