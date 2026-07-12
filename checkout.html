@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050505" />
+  <meta
+    name="description"
+    content="Receba gratuitamente o material Os Scripts da Cevora diretamente no seu e-mail."
+  />
+  <title>Receber material gratuito | Cevora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body class="checkout-page">
+  <div class="noise" aria-hidden="true"></div>
+  <div class="checkout-glow checkout-glow--gold" aria-hidden="true"></div>
+  <div class="checkout-glow checkout-glow--red" aria-hidden="true"></div>
+
+  <div class="offer-bar">
+    <span class="offer-bar__icon">♛</span>
+    <span>Material gratuito · envio imediato</span>
+  </div>
+
+  <header class="checkout-header">
+    <a class="brand" href="index.html" aria-label="Cevora, voltar para a página principal">
+      <span class="brand__mark" aria-hidden="true">
+        <span class="brand__crown">♛</span>
+        C
+      </span>
+      <span class="brand__name">CEVORA</span>
+    </a>
+
+    <a class="checkout-back" href="index.html">
+      <span aria-hidden="true">←</span>
+      Voltar para a página
+    </a>
+  </header>
+
+  <main class="checkout-main">
+    <section class="checkout-shell" aria-labelledby="checkout-title">
+      <div class="checkout-copy reveal is-visible">
+        <p class="eyebrow">Os Scripts da Cevora</p>
+        <h1>
+          O processo por trás de um atendimento que
+          <span class="gold-text">conduz e converte</span><span class="red-dot">.</span>
+        </h1>
+
+        <p class="checkout-copy__lead">
+          Receba gratuitamente o material com a estrutura utilizada para transformar conversas dispersas em um processo comercial mais claro, consistente e replicável.
+        </p>
+
+        <div class="checkout-resource">
+          <div class="checkout-resource__seal" aria-hidden="true">
+            <span>♛</span>
+          </div>
+          <div>
+            <span class="checkout-resource__label">Você receberá</span>
+            <strong>Os Scripts da Cevora</strong>
+            <p>Material digital enviado diretamente para o seu e-mail.</p>
+          </div>
+        </div>
+
+        <div class="checkout-trust" aria-label="Informações sobre o acesso">
+          <div>
+            <span class="checkout-trust__icon">✓</span>
+            <p><strong>100% gratuito</strong> sem cartão ou cobrança.</p>
+          </div>
+          <div>
+            <span class="checkout-trust__icon">✓</span>
+            <p><strong>Acesso imediato</strong> assim que o envio for confirmado.</p>
+          </div>
+          <div>
+            <span class="checkout-trust__icon">✓</span>
+            <p><strong>Feito para clínicas</strong> que querem estruturar o atendimento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-card-wrap reveal is-visible">
+        <div class="checkout-card">
+          <div class="checkout-card__topline" aria-hidden="true"></div>
+
+          <div class="checkout-card__step">
+            <span>01</span>
+            <span>Acesso ao material</span>
+          </div>
+
+          <div class="checkout-card__emblem" aria-hidden="true">
+            <span class="checkout-card__crown">♛</span>
+            <span>C</span>
+          </div>
+
+          <p class="checkout-card__kicker">Entrega digital</p>
+          <h2 id="checkout-title">
+            Para receber seu material gratuito, insira seu e-mail.
+          </h2>
+          <p class="checkout-card__description">
+            O acesso será enviado para o endereço informado abaixo.
+          </p>
+
+          <form class="lead-form" id="lead-form" novalidate data-endpoint="">
+            <label for="email">Seu melhor e-mail</label>
+            <div class="lead-form__field">
+              <span class="lead-form__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="M3.5 6.5h17v11h-17z" />
+                  <path d="m4.5 7.5 7.5 5.7 7.5-5.7" />
+                </svg>
+              </span>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="seuemail@clinica.com.br"
+                aria-describedby="email-feedback"
+                required
+              />
+            </div>
+
+            <p class="lead-form__feedback" id="email-feedback" aria-live="polite"></p>
+
+            <button class="button button--primary button--large lead-form__submit" type="submit">
+              <span>Receber material gratuito</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+
+            <p class="lead-form__privacy">
+              Ao continuar, você autoriza a Cevora a enviar este material e comunicações relacionadas. Você poderá se descadastrar quando quiser.
+            </p>
+          </form>
+
+          <div class="lead-success" id="lead-success" hidden>
+            <div class="lead-success__icon" aria-hidden="true">✓</div>
+            <p class="eyebrow">Solicitação recebida</p>
+            <h2>Agora verifique seu e-mail.</h2>
+            <p>O material será enviado para <strong id="submitted-email"></strong>.</p>
+            <a class="text-link" href="index.html">Voltar para a Cevora</a>
+          </div>
+
+          <div class="checkout-card__security">
+            <span class="checkout-card__lock" aria-hidden="true">◆</span>
+            <span>Seus dados são tratados com segurança.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="checkout-footer">
+    <span>© <span id="year"></span> Cevora</span>
+    <span>Estratégia, tecnologia e crescimento para clínicas.</span>
+  </footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
