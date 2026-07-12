@@ -25,7 +25,10 @@ if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
 
-const checkoutLinks = document.querySelectorAll('[data-checkout]');
+const checkoutLinks = document.querySelectorAll(
+  '[data-checkout], .button--header, .hero__actions .button--primary, .mobile-cta'
+);
+
 checkoutLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
