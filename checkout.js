@@ -48,7 +48,18 @@ const showSuccess = (email) => {
     securityNote.hidden = true;
   }
 
+  try {
+    sessionStorage.setItem('cevoraLeadEmail', email);
+    sessionStorage.setItem('cevoraLeadConfirmed', 'true');
+  } catch (error) {
+    console.warn('Cevora: não foi possível salvar os dados da sessão.', error);
+  }
+
   successPanel.hidden = false;
+
+  window.setTimeout(() => {
+    window.location.href = 'oto.html';
+  }, 1400);
 };
 
 emailInput?.addEventListener('input', () => {
