@@ -24,7 +24,7 @@ const setLoading = (isLoading) => {
 
   submitButton.disabled = isLoading;
   submitButton.innerHTML = isLoading
-    ? '<span>Abrindo sua oferta...</span>'
+    ? '<span>Confirmando seu acesso...</span>'
     : '<span>Receber material gratuito</span><span aria-hidden="true">↗</span>';
 };
 
@@ -65,16 +65,69 @@ emailInput?.addEventListener('input', () => {
   setFeedback();
 });
 
-form?.addEventListener('submit', (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const email = emailInput?.value.trim() || 'preview@cevora.local';
+  const email = emailInput?.value.trim() || '';
+  const endpoint = form.dataset.endpoint;
+
+  if (!emailInput?.checkValidity()) {
+    emailInput?.classList.add('is-invalid');
+    setFeedback('Digite um endereço de e-mail válido.');
+    emailInput?.focus();
+    return;
+  }
+
+  if (!endpoint) {
+    setFeedback('A integração ainda não foi configurada.');
+    return;
+  }
+
+  const query = new URLSearchParams(window.location.search);
 
   setLoading(true);
-  setFeedback('Modo de visualização ativo. Nenhum e-mail será enviado.', 'success');
+  setFeedback();
 
-  window.setTimeout(() => {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        source: 'cevora-scripts-checkout',
+        pageUrl: window.location.href,
+        utmSource: query.get('utm_source'),
+        utmMedium: query.get('utm_medium'),
+        utmCampaign: query.get('utm_campaign'),
+        utmContent: query.get('utm_content'),
+      }),
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result.ok) {
+      throw new Error(
+        result.error || 'Não foi possível confirmar seu acesso.'
+      );
+    }
+
+    setFeedback(
+      'Tudo certo. O material foi enviado para seu e-mail.',
+      'success'
+    );
+
     showSuccess(email);
+  } catch (error) {
+    console.error('Cevora: erro ao cadastrar lead.', error);
+
+    setFeedback(
+      error instanceof Error
+        ? error.message
+        : 'Ocorreu um erro. Tente novamente.'
+    );
+  } finally {
     setLoading(false);
-  }, 250);
+  }
 });
